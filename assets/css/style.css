@@ -1,0 +1,13 @@
+body {
+    background-image: url("triviaBackground.jpg");
+}
+h1 {
+    font-size: 26px;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
