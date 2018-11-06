@@ -1,26 +1,266 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Trivia Trivia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <!-- <script src="main.js"></script> -->
-</head>
-<body>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Trivia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/nice80sHeader.css">
 
-    <h1>Totally Trivial Trivia!</h1>
+  </head>
+    <body>
+        <h1 id="title">Totally Trivial Trivia!</h1>
+                <br>
+                <br>
+                <br>
+                <h3 id="timer">Seconds Remaining: 60</h3>
+                    <br>
+                    <br>
+                    <br>
+                <h4 id="q1">What is the capitol of Texas?
+                        <button id="qa1a">Austin</button>
+                        <button id="qa1b">Dallas</button>
+                        <button id="qa1c">Houston</button>
+                </h4> 
+                    <br>
+                    <br>
+                <h4 id="q2">Where is the Alamo?
+                        <button id="qa2a">Goliad</button>
+                        <button id="qa2b">San Antonio</button>
+                        <button id="qa2c">Gruene</button>
+                </h4> 
+                    <br>
+                    <br>
+                <h4 id="q3">What beverage shares the name of Austin?
+                        <button id="qa3a">Topo Chico</button>
+                        <button id="qa3b">Perrier</button>
+                        <button id="qa3c">Waterloo</button>
+                </h4>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                <h4>
+                        <button id="submit">Submit</button>
+                </h4>
+                    
 
-    <div class="main">
-        
-        <div class="instructions"></div>
-        
-        <div class="questions"></div>
-    
-    </div>
-    
-    <div class="score"></div>
-    
-</body>
+    <!-- Linking to our JavaScript file. -->
+            <script type="text/javascript" src="assets/javascript/game.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script>
+                //var "timer" starts the clock at 60.
+                var timer = 60;
+                //var timeinterval controls the speed at which the timer counts down. 60 = 60secs
+                var timerinterval;
+                //var rightcounter tracks amount of right answers
+                var rightcounter = 0;
+                //var wrongcounter tracks amount of wrong answers
+                var wrongcounter = 0;
+                //var q1 tracks user's answer to question 1
+                var q1 = 0;
+                //var q2 tracks user's answer to question 1
+                var q2 = 0;
+                //var q3 tracks user's answer to question 1
+                var q3 = 0;
+                //function "run" executes the following functions once opened in a 
+                function run() 
+                {
+                    clearInterval(timerinterval);
+                    timerinterval = setInterval(decrement, 1000);
+                }
+
+                //function decrement controls the timer and excutes various if statments as the timer dewindles
+                function decrement() 
+                {
+                    //Decreases the timer by one.
+                    timer--;
+                    //Show the number in the #show-number tag.
+                    $("#timer").html("<h2>" + "Seconds Remaining: "+ timer + "</h2>");
+                    //Once the time hits zero the following functions execute.
+                    if (timer === 0) {
+                    //stop function.
+                    stop();
+                    alert("Time Up!\n"+"You got "+rightcounter+" questions right!\n"+"You got "+wrongcounter+" questions wrong!");
+                    location.reload();
+                }
+                }
+
+                
+                //the following function stores user multiple choice answer for question #1.
+
+                //user's answer in var q1 as "a"
+                $("#qa1a").on("click", function() 
+                {
+                    q1=1;
+                });
+                //user's answer in var q1 as "b"
+                $("#qa1b").on("click", function() 
+                {
+                    q1=2;
+                });
+                //user's answer in var q1 as "c"
+                $("#qa1c").on("click", function() 
+                {
+                    q1=3;
+                });
+
+                //the follinging functions store user's answer for question #2
+
+                ////user's answer in var q2 as "a"
+                $("#qa2a").on("click", function() 
+                {
+                    var q2=1;
+                });
+                //user's answer in var q2 as "b"
+                $("#qa2b").on("click", function() 
+                {
+                    q2=2;
+                    console.log(q2)
+                });
+                //user's answer in var q2 as "c"
+                $("#qa2c").on("click", function() 
+                {
+                    q2=3;
+                    console.log(q2)
+                });
+                //the following functions store user's answer for question #3
+
+                ////user's answer in var q3 as "a"
+                $("#qa3a").on("click", function() 
+                {
+                    var q3=1;
+                    console.log(q3);
+                });
+                ////user's answer in var q3 as "b"
+                $("#qa3b").on("click", function() 
+                {
+                    q3=2;
+                    console.log(q3)
+                });
+                //// user's answer in var q3 as "c"
+                $("#qa3c").on("click", function() 
+                {
+                    q3=3;
+                    console.log(q3)
+                });
+
+                $("#submit").on("click", function() 
+                {
+                    if(q1===1){
+                        rightcounter++;
+                    }
+                    else{
+                        wrongcounter++;
+                    }
+                    if(q2===2){
+                        rightcounter++;
+                    }
+                    else{
+                        wrongcounter++;
+                    }
+                    if(q3===3){
+                        rightcounter++;
+                    }
+                    else{
+                        wrongcounter++;
+                    }
+                    
+                    alert("You got "+rightcounter+" questions right!\n"+"You got "+wrongcounter+" questions wrong!");
+                    clearInterval(timerinterval);
+                    location.reload();
+                });
+                
+
+
+
+                
+                //Continues the run function.
+                run();
+
+
+            </script>
+            <style>
+                body{   
+                    /* display: flex; */
+                    /* justify-content: center; */
+                    width: 100%;
+                    background-image: url("https://static.brusheezy.com/system/resources/previews/000/000/984/non_2x/70-s-photoshop-pattern-photoshop-patterns.jpg");
+                    
+                }
+                button{
+                    background-color: rgb(0, 139, 23);
+                    color: turquoise;
+                    padding: 5px;
+                    margin-left: 10px;
+                }
+                    #title{
+                      text-align: center;
+                      color: rgb(12, 14, 13);
+                    }
+                    #timer{
+                        margin: auto;
+                        background-color: rgb(0, 139, 23);
+                        border-style: inset;
+                        border-color: turquoise;
+                        border-width: thin;
+                        width: 33%;
+                        text-align: center;
+                        padding: 15px;
+                        color: turquoise;
+                    }
+                    #q1{
+                        margin: auto;
+                        background-color: rgb(0, 139, 230);
+                        border-style:inset;
+                        border-color: turquoise;
+                        border-width: thin;
+                        width:50%;
+                        text-align: center;
+                        padding: 15px;
+                        color: rgb(240, 245, 244);
+                    }
+                    #qa1{
+                        margin: auto;
+                    }
+                    #q2{
+                        margin: auto;
+                        background-color: rgb(0, 139, 23);
+                        border-style:inset;
+                        border-color: turquoise;
+                        border-width: thin;
+                        width:50%;
+                        text-align: center;
+                        padding: 15px;
+                        color: turquoise;
+                    }
+                    #qa2{
+                        margin: auto;
+                    }
+                    #q3{
+                        margin: auto;
+                        background-color: rgb(205, 226, 208);
+                        border-style:inset;
+                        border-color: turquoise;
+                        border-width: thin;
+                        width:50%;
+                        text-align: center;
+                        padding: 15px;
+                        color: turquoise;
+                    }
+                    #qa3{
+                        margin: auto;
+                    }
+                    #submit{
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 40%;
+                        width: 20%;
+                    }
+                    text {
+                        font-size: 24px;
+                    }
+                </style>
+    </body>
 </html>
