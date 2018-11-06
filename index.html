@@ -46,23 +46,23 @@
                 </h4>
                     
 
-    <!-- Linking to our JavaScript file. -->
+    
             <script type="text/javascript" src="assets/javascript/game.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script>
-                //var "timer" starts the clock at 60.
+                //starts the clock at 60.
                 var timer = 60;
-                //var timeinterval controls the speed at which the timer counts down. 60 = 60secs
+                //controls the speed 
                 var timerinterval;
-                //var rightcounter tracks amount of right answers
+                //tracks amount of right answers
                 var rightcounter = 0;
-                //var wrongcounter tracks amount of wrong answers
+                //tracks amount of wrong answers
                 var wrongcounter = 0;
-                //var q1 tracks user's answer to question 1
+                //tracks user's answer to question 1
                 var q1 = 0;
-                //var q2 tracks user's answer to question 1
+                //tracks user's answer to question 1
                 var q2 = 0;
-                //var q3 tracks user's answer to question 1
+                //tracks user's answer to question 1
                 var q3 = 0;
                 //function "run" executes the following functions once opened in a 
                 function run() 
@@ -117,13 +117,13 @@
                 $("#qa2b").on("click", function() 
                 {
                     q2=2;
-                    console.log(q2)
+                    
                 });
                 //user's answer in var q2 as "c"
                 $("#qa2c").on("click", function() 
                 {
                     q2=3;
-                    console.log(q2)
+                    
                 });
                 //the following functions store user's answer for question #3
 
@@ -131,19 +131,19 @@
                 $("#qa3a").on("click", function() 
                 {
                     var q3=1;
-                    console.log(q3);
+                    
                 });
                 ////user's answer in var q3 as "b"
                 $("#qa3b").on("click", function() 
                 {
                     q3=2;
-                    console.log(q3)
+                    
                 });
                 //// user's answer in var q3 as "c"
                 $("#qa3c").on("click", function() 
                 {
                     q3=3;
-                    console.log(q3)
+                   
                 });
 
                 $("#submit").on("click", function() 
@@ -176,7 +176,7 @@
 
 
                 
-                //Continues the run function.
+                
                 run();
 
 
